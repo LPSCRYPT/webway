@@ -1,10 +1,14 @@
 import Root from "./Scene/Root";
-import marbleScene from "./Scene/Config/marbleScene";
+import { Route, Switch } from "react-router-dom";
 
 const App = ({}: { subgraphUri: string }) => {
   return (
     <div className="w-screen h-screen">
-      <Root sceneConfig={marbleScene} />
+      <Switch>
+        <Route path="/:tokenId">
+          <Root />
+        </Route>
+      </Switch>
     </div>
   );
 };
