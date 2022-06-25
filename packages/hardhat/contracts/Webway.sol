@@ -31,8 +31,7 @@ contract Webway is ERC721URIStorage {
         _safeMint(msg.sender, counter);
         counter ++;
         changeURI(0, "https://ipfs.io/ipfs/QmUdMBcKtaQ5114GjcoXR4rgobELFsTgs54CFZGLnBjR7t");
-        _initEffects();
-        // init effects
+        // _initEffects();
      }
 
      function mintNewSpace(string memory _uri) public {
@@ -41,23 +40,33 @@ contract Webway is ERC721URIStorage {
          counter++;
      }
 
-     function _initEffects() internal {
-         Effect storage statue = effectData['statue'];
-         Effect storage sky = effectData['sky'];
-         Effect storage portal = effectData['portal'];
-         statue._type = 'object';
-         statue._uri = 'statuehash';
-         statue.init = true;
-         sky._type = 'background';
-         sky._uri = 'skyhash';
-         sky.init = true;
-         portal._type = 'portal';
-         portal._uri = 'portalhash';
-         portal.init = true;
-         toggleEffect('statue');
-         toggleEffect('sky');
-         toggleEffect('portal');
+     function addEffect(string memory _uri, string memory _name, string memory _type) public {
+         require(!effectData[_name].init, "Effect already initialized");
+         Effect storage newEffect = effectData[_name];
+         newEffect._type = _type;
+         newEffect._active = true;
+         newEffect._uri = _uri;
+         newEffect.init = true;
+         emit EffectToggle(_name, newEffect._type, newEffect._active, newEffect._uri);
      }
+
+    //  function _initEffects() internal {
+    //      Effect storage statue = effectData['statue'];
+    //      Effect storage sky = effectData['sky'];
+    //      Effect storage portal = effectData['portal'];
+    //      statue._type = 'object';
+    //      statue._uri = 'statuehash';
+    //      statue.init = true;
+    //      sky._type = 'background';
+    //      sky._uri = 'skyhash';
+    //      sky.init = true;
+    //      portal._type = 'portal';
+    //      portal._uri = 'portalhash';
+    //      portal.init = true;
+    //      toggleEffect('statue');
+    //      toggleEffect('sky');
+    //      toggleEffect('portal');
+    //  }
 
     function changeURI(uint256 _index, string memory _uri) public {
         _setTokenURI(_index, _uri);
