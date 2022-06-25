@@ -19,6 +19,17 @@ type Owner @entity {
   own: Boolean!
 }
 
+type ActiveEffect @entity {
+  id: ID!
+  type: String!
+  uri: String!
+}
+
+type TokenURI @entity {
+  id: ID!
+  uri: String!
+}
+
 # type All @entity {
 #   id: ID!
 #   numTokenContracts: BigInt!

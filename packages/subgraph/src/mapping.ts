@@ -3,7 +3,12 @@ import {
   YourContract,
   SetPurpose,
 } from '../generated/YourContract/YourContract';
-import { Webway, Transfer } from '../generated/Webway/Webway';
+import {
+  Webway,
+  Transfer,
+  EffectToggle,
+  ChangeURI,
+} from '../generated/Webway/Webway';
 import {
   Purpose,
   Sender,
@@ -12,6 +17,8 @@ import {
   Owner,
   // All,
   // OwnerPerTokenContract,
+  ActiveEffect,
+  TokenURI,
 } from '../generated/schema';
 
 export function handleSetPurpose(event: SetPurpose): void {
@@ -66,4 +73,27 @@ export function handleTransfer(event: Transfer): void {
   ownerTo.own = true;
   ownerTo.save();
   // if from isnt zero add, then subtract from ownership
+}
+
+export function handleEffectToggle(event: EffectToggle): void {
+  let effectName = event.params._name;
+  let action = event.params._active;
+  if (action == false) {
+    store.remove('ActiveEffect', effectName);
+  } else {
+    let newEffect = new ActiveEffect(effectName);
+    newEffect.type = event.params._type;
+    newEffect.uri = event.params._uri;
+    newEffect.save();
+  }
+}
+
+export function handleChangeURI(event: ChangeURI): void {
+  let id = event.params._index.toString();
+  let thisToken = TokenURI.load(id);
+  if (thisToken == null) {
+    thisToken = new TokenURI(id);
+  }
+  thisToken.uri = event.params._uri;
+  thisToken.save();
 }

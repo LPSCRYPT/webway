@@ -34,10 +34,15 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - Owner
+        - ActiveEffect
       abis:
         - name: Webway
           file: ./abis/localhost_Webway.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
+        - event: EffectToggle(string,string,bool,string)
+          handler: handleEffectToggle
+        - event: ChangeURI(uint256,string)
+          handler: handleChangeURI
       file: ./src/mapping.ts
