@@ -1,13 +1,15 @@
 import { SceneConfiguration } from "../Config/types/scene";
-import Element from './Element';
+import Element from "./Element";
 
-const ElementsTree = ({elements}: Pick<SceneConfiguration, 'elements'>) => {
+const ElementsTree = ({ elements }: Pick<SceneConfiguration, "elements">) => {
   if (!elements) return null;
-  return <>
-  {elements.map((element, i) => (
-    <Element config={element} />
-  ))}
-  </>
-}
+  return (
+    <>
+      {elements.map((element, i) => (
+        <Element config={element} />
+      ))}
+    </>
+  );
+};
 
 export default ElementsTree;

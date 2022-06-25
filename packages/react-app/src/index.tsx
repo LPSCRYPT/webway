@@ -1,7 +1,7 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import ReactDOM from 'react-dom/client';
+import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 
@@ -12,9 +12,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
 root.render(
   <ApolloProvider client={client}>

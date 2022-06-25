@@ -2,8 +2,8 @@ import { Component } from "react";
 
 export default class ErrorBoundary extends Component {
   state = {
-    hasError:false
-  }
+    hasError: false,
+  };
   constructor(props: any) {
     super(props);
     this.state = { hasError: false };
@@ -26,6 +26,6 @@ export default class ErrorBoundary extends Component {
     }
 
     // @ts-ignore
-    return this.props.children; 
+    return this.props.children;
   }
 }
