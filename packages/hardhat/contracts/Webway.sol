@@ -30,7 +30,7 @@ contract Webway is ERC721URIStorage {
     constructor(string memory name_, string memory symbol_) ERC721 (name_, symbol_)  {
         _safeMint(msg.sender, counter);
         counter ++;
-        changeURI(0, "test");
+        changeURI(0, "https://ipfs.io/ipfs/QmUdMBcKtaQ5114GjcoXR4rgobELFsTgs54CFZGLnBjR7t");
         _initEffects();
         // init effects
      }
