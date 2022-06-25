@@ -29,7 +29,7 @@ const Root = () => {
     <Canvas>
       <ErrorBoundary>
         {sceneConfig && (
-          <> 
+          <>
             <Environment environment={sceneConfig.environment} />
             <ElementsTree elements={sceneConfig.elements} />
           </>
@@ -41,5 +41,3 @@ const Root = () => {
 };
 
 export default Root;
-
-

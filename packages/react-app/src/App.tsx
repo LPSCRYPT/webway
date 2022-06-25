@@ -1,12 +1,16 @@
-import Root from "./Scene/Root";
+import Scene from "./Scene";
 import { Route, Switch } from "react-router-dom";
+import ScenesList from "./Scene/ScenesList";
 
 const App = ({}: { subgraphUri: string }) => {
   return (
     <div className="w-screen h-screen">
       <Switch>
         <Route path="/:tokenId">
-          <Root />
+          <Scene />
+        </Route>
+        <Route path="/">
+          <ScenesList />
         </Route>
       </Switch>
     </div>
