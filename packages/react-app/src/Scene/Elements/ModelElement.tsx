@@ -14,7 +14,7 @@ const ModelElement = ({config}: {config?: Nullable<ModelConfig>}) => {
 
   if (!config.fileUrl) return null;
 
-return <ModelElementInner fileUrl={config.fileUrl} />;
+  return <ModelElementInner fileUrl={config.fileUrl} />;
 }
 
 export default ModelElement;
