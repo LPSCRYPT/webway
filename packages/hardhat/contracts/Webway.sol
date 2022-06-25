@@ -44,7 +44,7 @@ contract Webway is ERC721URIStorage {
          require(!effectData[_name].init, "Effect already initialized");
          Effect storage newEffect = effectData[_name];
          newEffect._type = _name;
-         newEffect._active = true;
+         newEffect._active = false;
          newEffect._uri = _uri;
          newEffect.init = true;
          emit EffectToggle(_name, newEffect._type, newEffect._active, newEffect._uri);

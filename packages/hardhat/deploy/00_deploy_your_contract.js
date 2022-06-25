@@ -4,6 +4,8 @@ const { ethers } = require('hardhat');
 
 const localChainId = '31337';
 
+const skaleChainId = '0x40b9020d';
+
 // const sleep = (ms) =>
 //   new Promise((r) =>
 //     setTimeout(() => {
