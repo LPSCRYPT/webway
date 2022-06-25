@@ -40,10 +40,10 @@ contract Webway is ERC721URIStorage {
          counter++;
      }
 
-     function addEffect(string memory _uri, string memory _name, string memory _type) public {
+     function addEffect(string memory _uri, string memory _name) public {
          require(!effectData[_name].init, "Effect already initialized");
          Effect storage newEffect = effectData[_name];
-         newEffect._type = _type;
+         newEffect._type = _name;
          newEffect._active = true;
          newEffect._uri = _uri;
          newEffect.init = true;
