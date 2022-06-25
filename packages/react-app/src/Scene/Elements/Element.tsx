@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Element, Transform} from '../Config/types/elements';
+import { Element, ElementType, Transform} from '../Config/types/elements';
 import { Vector3} from 'three';
 import { Nullable } from '../Config/types/shared';
+import ModelElement from './ModelElement';
+import ElementsTree from './ElementsTree';
 
 const useTransform = (transformConfig?: Nullable<Transform>) => {
 const [transform, setTransform] = useState<{
@@ -39,7 +41,9 @@ const ElementComponent = ({config}:{config: Element}) => {
   // @ts-ignore
   rotation={transform.rotation}
   >
-
+    {config.elementType === ElementType.Model && <ModelElement config={config.modelConfig} />}
+  
+    <ElementsTree elements={config.children} />
   </group>
 }
 
