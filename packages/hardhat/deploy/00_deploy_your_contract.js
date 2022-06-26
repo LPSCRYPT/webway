@@ -17,6 +17,7 @@ const skaleChainId = '0x40b9020d';
 module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
   const { deploy } = deployments;
   const { deployer } = await getNamedAccounts();
+  console.log(deployer, 'DEPLOYER');
   const chainId = await getChainId();
 
   await deploy('YourContract', {
