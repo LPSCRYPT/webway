@@ -23,6 +23,7 @@ type ActiveEffect @entity {
   id: ID!
   type: String!
   uri: String!
+  active: Boolean!
 }
 
 type TokenURI @entity {
