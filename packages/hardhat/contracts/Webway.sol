@@ -6,6 +6,17 @@ import "hardhat/console.sol";
 // import "@openzeppelin/contracts/access/Ownable.sol"; 
 // https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol
 
+string constant spacea_ipfs = "https://ipfs.io/ipfs/QmUdMBcKtaQ5114GjcoXR4rgobELFsTgs54CFZGLnBjR7t";
+
+address constant address_a = 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266;
+
+string constant effectAKey = "makeSkyOnFire";
+string constant effectAIpfs = "ipfs.io/QmV92ZZM1GaDULds5jqb6Vk5ESTcMZKTDVvYePRh9gTXrJ";
+string constant effectBKey = "changeWaterColor";
+string constant effectBIpfs = "ipfs.io/QmNzkCaF2sCVzT8CeUkkcLgzJ9wbTquy2LHzUpaRmrhpf1";
+
+
+
 contract Webway is ERC721URIStorage {
 
     // event EffectEmitted(string _type, );
@@ -28,9 +39,16 @@ contract Webway is ERC721URIStorage {
     uint256 counter;
 
     constructor(string memory name_, string memory symbol_) ERC721 (name_, symbol_)  {
-        _safeMint(msg.sender, counter);
+        _safeMint(address_a, counter);
+        changeURI(counter, spacea_ipfs);
+        addEffect(effectAIpfs, effectAKey);
+        addEffect(effectBIpfs, effectBKey);
+        toggleEffect(effectAKey);
         counter ++;
-        changeURI(0, "https://ipfs.io/ipfs/QmUdMBcKtaQ5114GjcoXR4rgobELFsTgs54CFZGLnBjR7t");
+        _safeMint(address_a, counter);
+        changeURI(counter, spacea_ipfs);
+        counter ++;
+
         // _initEffects();
      }
 
