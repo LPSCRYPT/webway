@@ -47,7 +47,7 @@ contract Webway is ERC721URIStorage {
         _safeMint(address_a, counter);
         changeURI(counter, spacea_ipfs);
         addEffect(counter, effectAIpfs, effectAKey);
-        addEffect(counter, effectAIpfs, effectBKey);
+        addEffect(counter, effectBIpfs, effectBKey);
         // addEffect(effectBIpfs, effectBKey);
         counter++;
 
