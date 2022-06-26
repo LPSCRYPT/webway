@@ -124,21 +124,21 @@ export const NETWORKS = {
     color: "#28a0f0",
     chainId: 421611,
     blockExplorer: "https://testnet.arbiscan.io/",
-    rpcUrl: 'https://rinkeby.arbitrum.io/rpc',
+    rpcUrl: "https://rinkeby.arbitrum.io/rpc",
   },
   arbitrum: {
     name: "arbitrum",
     color: "#28a0f0",
     chainId: 42161,
     blockExplorer: "https://arbiscan.io/",
-    rpcUrl: 'https://arb1.arbitrum.io/rpc',
+    rpcUrl: "https://arb1.arbitrum.io/rpc",
   },
   devnetArbitrum: {
     name: "devnetArbitrum",
     color: "#28a0f0",
     chainId: 421612,
     blockExplorer: "https://nitro-devnet-explorer.arbitrum.io/",
-    rpcUrl: 'https://nitro-devnet.arbitrum.io/rpc',
+    rpcUrl: "https://nitro-devnet.arbitrum.io/rpc",
   },
   localAvalanche: {
     name: "localAvalanche",
@@ -225,6 +225,13 @@ export const NETWORKS = {
     chainId: 1281,
     blockExplorer: "https://moonbeam-explorer.netlify.app/",
     rpcUrl: "http://127.0.0.1:9933",
+  },
+  skale: {
+    name: "skale",
+    color: "#5392F0",
+    chainId: 0x40b9020d,
+    blockExplorer: "https://downright-royal-saiph.explorer.hackathon.skalenodes.com/",
+    rpcUrl: "https://hackathon.skalenodes.com/v1/downright-royal-saiph",
   },
 };
 
