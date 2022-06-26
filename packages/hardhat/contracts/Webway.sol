@@ -22,33 +22,39 @@ contract Webway is ERC721URIStorage {
     // event EffectEmitted(string _type, );
 
     struct Effect {
-        string _type;
+        uint256 _token_id;
+        string _key;
         bool _active;
         string _uri;
         bool init;
     }
 
-    event EffectToggle(string _name,  string _type, bool _active, string _uri);
+    event EffectToggle(uint256 _token_id, string _key, bool _active, string _uri);
 
     event ChangeURI(uint256 _index, string _uri);
 
     // string[] effectIndex = ['statue1','statue2','skybox1'];
 
-    mapping(string => Effect) effectData;
+    // mapping(string => Effect) effectData;
+    mapping(uint256 => mapping (string => Effect)) public effectData;
+
+    mapping(string => mapping(address => uint)) public metadataUri;
+
 
     uint256 counter;
 
     constructor(string memory name_, string memory symbol_) ERC721 (name_, symbol_)  {
         _safeMint(address_a, counter);
         changeURI(counter, spacea_ipfs);
-        addEffect(effectAIpfs, effectAKey);
-        addEffect(effectBIpfs, effectBKey);
-        toggleEffect(effectAKey);
-        counter ++;
-        _safeMint(address_a, counter);
-        changeURI(counter, spacea_ipfs);
-        counter ++;
+        addEffect(counter, effectAIpfs, effectAKey);
+        addEffect(counter, effectAIpfs, effectBKey);
+        // addEffect(effectBIpfs, effectBKey);
+        counter++;
 
+        _safeMint(address_a, counter);
+        addEffect(counter, effectAIpfs, effectAKey);
+        changeURI(counter, spacea_ipfs);
+        counter++;
         // _initEffects();
      }
 
@@ -58,14 +64,15 @@ contract Webway is ERC721URIStorage {
          counter++;
      }
 
-     function addEffect(string memory _uri, string memory _name) public {
-         require(!effectData[_name].init, "Effect already initialized");
-         Effect storage newEffect = effectData[_name];
-         newEffect._type = _name;
+     function addEffect(uint256 _index, string memory _uri, string memory _key) public {
+         require(!effectData[_index][_key].init, "Effect already initialized");
+         Effect storage newEffect = effectData[_index][_key];
+         newEffect._token_id = _index;
+         newEffect._key = _key;
          newEffect._active = false;
          newEffect._uri = _uri;
          newEffect.init = true;
-         emit EffectToggle(_name, newEffect._type, newEffect._active, newEffect._uri);
+         emit EffectToggle(_index, _key, false, _uri);
      }
 
     //  function _initEffects() internal {
@@ -91,11 +98,11 @@ contract Webway is ERC721URIStorage {
         emit ChangeURI(_index, _uri);
     }
 
-    function toggleEffect(string memory _id) public {
-        Effect storage _effect = effectData[_id];
+    function toggleEffect(uint256 _index, string memory _id) public {
+        Effect storage _effect = effectData[_index][_id];
         require(_effect.init == true, "No such effect found");
         _effect._active = !_effect._active;
-        emit EffectToggle(_id, _effect._type, _effect._active, _effect._uri);
+        emit EffectToggle(_index, _effect._key, _effect._active, _effect._uri);
     }
 
 }

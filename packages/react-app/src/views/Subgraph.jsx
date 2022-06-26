@@ -18,9 +18,10 @@ function Subgraph(props) {
   const ACTIVE_EFFECTS_QUERY = `
   {
     activeEffects {
-      id
-      type
-      uri
+      uri,
+      tokenId,
+      key,
+      active
     }
   }
   `;
@@ -57,9 +58,10 @@ function Subgraph(props) {
   useEffect(() => {
     if (dataActive && dataActive.activeEffects.length > 0) {
       let tempArr = dataActive.activeEffects.map(effect => ({
-        id: effect.id,
-        type: effect.type,
         uri: effect.uri,
+      tokenId: effect.tokenId,
+      key: effect.key,
+      active: effect.active
       }));
       setEffects(tempArr);
     }
@@ -76,9 +78,9 @@ function Subgraph(props) {
 
   return (
     <>
-      {dataOwners ? <div>{JSON.stringify(owners)}</div> : <div>Loading...</div>}
-      {dataActive ? <div>{JSON.stringify(effects)}</div> : <div>Loading...</div>}
-      {dataToken ? <div>{JSON.stringify(tokens)}</div> : <div>Loading...</div>}
+      {dataOwners ? <div>{JSON.stringify({owners})}</div> : <div>Loading...</div>}
+      {dataActive ? <div>{JSON.stringify({effects})}</div> : <div>Loading...</div>}
+      {dataToken ? <div>{JSON.stringify({tokens})}</div> : <div>Loading...</div>}
     </>
   );
 }
