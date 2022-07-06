@@ -6,12 +6,12 @@ import "hardhat/console.sol";
 // import "@openzeppelin/contracts/access/Ownable.sol"; 
 // https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol
 
-string constant spacea_ipfs = "https://ipfs.io/ipfs/QmUdMBcKtaQ5114GjcoXR4rgobELFsTgs54CFZGLnBjR7t";
+string constant spacea_ipfs = "https://ipfs.io/ipfs/QmR2oPYsXtzY15kvcc7GBfB2TgL4jvvQ1LPMW31VFH8neH";
 
 address constant address_a = 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266;
 
 string constant effectAKey = "makeSkyOnFire";
-string constant effectAIpfs = "ipfs.io/QmV92ZZM1GaDULds5jqb6Vk5ESTcMZKTDVvYePRh9gTXrJ";
+string constant effectAIpfs = "ipfs.io/QmRWE5947EbiCeN2v6XEno8taJbgMQVSwQc1BJtp5b1CkK";
 string constant effectBKey = "changeWaterColor";
 string constant effectBIpfs = "ipfs.io/QmNzkCaF2sCVzT8CeUkkcLgzJ9wbTquy2LHzUpaRmrhpf1";
 
