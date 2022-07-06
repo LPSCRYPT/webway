@@ -21,7 +21,8 @@ type Owner @entity {
 
 type ActiveEffect @entity {
   id: ID!
-  type: String!
+  tokenId: ID!
+  key: String!
   uri: String!
   active: Boolean!
 }

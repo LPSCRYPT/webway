@@ -76,17 +76,25 @@ export function handleTransfer(event: Transfer): void {
 }
 
 export function handleEffectToggle(event: EffectToggle): void {
-  let newEffect = new ActiveEffect(event.params._name);
-  if (newEffect == null) {
-    newEffect.active = false;
-    newEffect.type = event.params._type;
-    newEffect.uri = event.params._uri;
+  let tokenID = event.params._token_id.toString();
+  let effectKey = event.params._key.toString();
+
+  let key = tokenID + effectKey;
+
+  let effect = ActiveEffect.load(key);
+  
+  if (effect === null) {
+    effect = new ActiveEffect(key);
+    effect.tokenId = tokenID;
+    effect.key = effectKey;
+    effect.active = false;
+    effect.uri = event.params._uri;
   } else {
-    //toggle
-    newEffect.active = !newEffect.active;
+    effect.active = event.params._active;
   }
 
-  newEffect.save();
+  effect.save();
+  
 }
 
 export function handleChangeURI(event: ChangeURI): void {

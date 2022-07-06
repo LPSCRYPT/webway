@@ -41,7 +41,7 @@ dataSources:
       eventHandlers:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
-        - event: EffectToggle(string,string,bool,string)
+        - event: EffectToggle(uint256,string,bool,string)
           handler: handleEffectToggle
         - event: ChangeURI(uint256,string)
           handler: handleChangeURI
