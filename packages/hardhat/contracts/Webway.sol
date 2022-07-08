@@ -13,7 +13,7 @@ address constant address_a = 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266;
 string constant effectAKey = "makeSkyOnFire";
 string constant effectAIpfs = "ipfs://bafkreief42ckfa7fbxikb33xqjxmukqkf4lmbq3pk6cclpo6ajrvxf4m6u";
 string constant effectBKey = "changeWaterColor";
-string constant effectBIpfs = spacea_ipfs;
+string constant effectBIpfs = "ipfs://bafkreihr4tnpf4f4lkbmyz3pv5ofmewgcgkyuaj6yvgy53z46stjvzqayu";
 
 
 
